@@ -636,7 +636,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
-  m_LocalRotation: {x: 0.38268346, y: -0.000000022481217, z: 0.000000009312026, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 0.00000002248122, z: -0.000000009312027, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 40, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -820,8 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a14849579ce144c8f795cbe5ee54a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testTransform: {fileID: 251114328897646095, guid: 779fa77279e301847a10c56be86bc0d7,
-    type: 3}
+  gridPlaceable: {fileID: 11400000, guid: 026576aa3161fcc4e8726f5b4f3fe248, type: 2}
 --- !u!1 &1160234425
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,7 +932,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417923631}
-  m_LocalRotation: {x: 0.38268346, y: -0.000000022481217, z: 0.000000009312026, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 0.00000002248122, z: -0.000000009312027, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 40, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1229,7 +1228,7 @@ MonoBehaviour:
   canPan: 0
   moveSpeed: 50
   edgeScrollSize: 25
-  rotateSpeed: 150
+  rotateSpeed: 50
   dragPanSpeed: 200
 --- !u!1001 &1412204214137837596
 PrefabInstance:

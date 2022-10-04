@@ -1,14 +1,14 @@
-using System;
+using System.Collections.Generic;
 using CodeMonkey.Utils;
+using Grid;
 using UnityEngine;
-using UnityEngine.Diagnostics;
-using UnityEngine.InputSystem;
 
 public class GridBuilder : MonoBehaviour
 {
-    [SerializeField] private Transform testTransform;
+    [SerializeField] private GridPlaceable gridPlaceable;
     
     private GridXZ<GridObject> grid;
+    private GridPlaceable.Dir dir = GridPlaceable.Dir.Down;
     private void Awake()
     {
         int gridWidth = 10;
@@ -58,12 +58,26 @@ public class GridBuilder : MonoBehaviour
         {
             grid.GetXZ(Mouse3D.GetMouseWorldPosition(), out int x, out int z);
 
-            GridObject gridObject = grid.GetGridObject(x, z);
+            List<Vector2Int> gridPositionList = gridPlaceable.GetGridPositionList(new Vector2Int(x, z), GridPlaceable.Dir.Down);
 
-            if (gridObject.CanBuild())
+            bool canBuild = true;
+            foreach (Vector2Int gridPosition in gridPositionList)
             {
-                Transform buildTransform = Instantiate(testTransform, grid.GetWorldPosition(x, z), Quaternion.identity);
-                gridObject.SetTransform(buildTransform);
+                if(!grid.GetGridObject(gridPosition.x, gridPosition.y).CanBuild())
+                {
+                    canBuild = false;
+                    break;
+                }
+            }
+            
+            if (canBuild)
+            {
+                Transform buildTransform = Instantiate(gridPlaceable.prefab, grid.GetWorldPosition(x, z), Quaternion.identity);
+
+                foreach (var gridPosition in gridPositionList)
+                {
+                    grid.GetGridObject(gridPosition.x, gridPosition.y).SetTransform(buildTransform);
+                }
             }
             else
             {
